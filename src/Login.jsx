@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState();
-  const [status, setStatus] = useState();
+  const [status, setStatus] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -20,15 +20,16 @@ const Login = () => {
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem("token", data.token);
-        setStatus("Login successful");
         navigate("/dashboard");
         console.log("Response data", data);
       } else {
-        setStatus("Login failed! try again");
+        setStatus(data.message);
+        console.log("Failed give current email & password");
       }
     } catch (error) {
       console.log(error);
-      setStatus("Error hapend");
+      setStatus("Error Accourd");
+      console.log(status);
     }
   };
   return (

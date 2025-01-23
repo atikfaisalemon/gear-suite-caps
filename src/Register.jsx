@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 
 const Register = () => {
   const [name, setName] = useState(" ");
-  const [username, setUserName] = useState(" ");
+  // const [username, setUserName] = useState(" ");
   const [email, setEmail] = useState(" ");
   const [role, setRole] = useState("user");
   const [password, setPassword] = useState();
@@ -14,7 +14,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const data = { name, username, email, password, role };
+      const data = { name, email, password, role };
       const response = await fetch("http://localhost:3000/user/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -23,14 +23,17 @@ const Register = () => {
       if (response.ok) {
         const data = await response.json();
         console.log("data", data);
-        setStatus("Registration successful!");
+        setStatus(data.message);
+        setEmail("");
+        setPassword("");
+        setName("");
         // navigate("/login");
       } else {
-        setStatus("Registration failed. try again");
+        setStatus(data.message);
       }
     } catch (error) {
-      console.log("An error", error.massage);
-      setStatus(error.massage);
+      console.log("An error", error.message);
+      setStatus(error.message);
     }
   };
 
@@ -72,7 +75,7 @@ const Register = () => {
                 />
               </div>
             </div>
-            <div>
+            {/* <div>
               <div className="flex items-center justify-between">
                 <label
                   htmlFor="username"
@@ -93,7 +96,7 @@ const Register = () => {
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
               </div>
-            </div>
+            </div> */}
             <div>
               <div className="flex items-center justify-between">
                 <label

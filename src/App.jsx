@@ -2,9 +2,10 @@ import { Route, Routes } from "react-router";
 import "./App.css";
 import Register from "./Register.jsx";
 import Login from "./Login";
-import Navbar from "./Navbar.jsx";
+
 import DashBoard from "./DashBoard.jsx";
 import Create from "./Create.jsx";
+import { PrivateLayout } from "./components/layout/PrivateLayout.jsx";
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
       <Route index element={<Register />} />
       <Route path="login" element={<Login />} />
 
-      <Route element={<Navbar />}>
+      <Route element={<PrivateLayout />}>
         <Route path="dashboard" element={<DashBoard />} />
         <Route path="create" element={<Create />} />
       </Route>
