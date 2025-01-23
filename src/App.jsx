@@ -2,10 +2,10 @@ import { Route, Routes } from "react-router";
 import "./App.css";
 import Register from "./Register.jsx";
 import Login from "./Login";
-
 import DashBoard from "./DashBoard.jsx";
 import Create from "./Create.jsx";
 import { PrivateLayout } from "./components/layout/PrivateLayout.jsx";
+import ProductDetails from "./ProductDetails.jsx";
 
 function App() {
   return (
@@ -15,6 +15,7 @@ function App() {
 
       <Route element={<PrivateLayout />}>
         <Route path="dashboard" element={<DashBoard />} />
+        <Route path="dashboard/product/:id" element={<ProductDetails />} />
         <Route path="create" element={<Create />} />
       </Route>
 

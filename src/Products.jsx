@@ -1,6 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router";
 
 const Products = ({ products }) => {
+  const navigate = useNavigate();
+
   return (
     <div>
       <div className="bg-white">
@@ -11,7 +14,7 @@ const Products = ({ products }) => {
             {products.map((product) => (
               <div
                 onClick={() => {
-                  console.log("ID", product.id);
+                  navigate(`product/${product.id}`);
                 }}
                 key={product.id}
                 className="group relative flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white"
