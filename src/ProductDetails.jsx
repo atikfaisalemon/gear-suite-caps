@@ -1,18 +1,17 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import SigleProducts from "./SigleProducts";
 
 const ProductDetails = () => {
   const [products, setProducts] = useState({});
-  const [status, setStatus] = useState("");
+  console.log("pro", products);
   const params = useParams();
-
-  console.log("params", params);
 
   const getProduct = async () => {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `http://localhost:3000/dashboard/product/${params.id}`,
+        `http://localhost:3000/product/getsingle/${params.id}`,
         {
           method: "GET",
           headers: {
@@ -24,7 +23,8 @@ const ProductDetails = () => {
       if (response.ok) {
         const data = await response.json();
         console.log("data", data);
-        setProducts(data);
+
+        setProducts(data.product);
       }
     } catch (error) {
       console.log(error.message);
@@ -34,7 +34,15 @@ const ProductDetails = () => {
     getProduct();
   }, []);
 
-  return <div>ProductDetails{params.id}</div>;
+  if (!products) {
+    return null;
+  }
+  console.log("pro", products);
+  return (
+    <div>
+      <SigleProducts product={products} />
+    </div>
+  );
 };
 
 export default ProductDetails;
