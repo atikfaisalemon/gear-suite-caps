@@ -6,6 +6,9 @@ import DashBoard from "./DashBoard.jsx";
 import Create from "./Create.jsx";
 import { PrivateLayout } from "./components/layout/PrivateLayout.jsx";
 import ProductDetails from "./ProductDetails.jsx";
+import UpdateProduct from "./UpdateProduct.jsx";
+import SingleUpdate from "./SingleUpdate.jsx";
+import UserProfile from "./UserProfile.jsx";
 
 function App() {
   return (
@@ -17,6 +20,9 @@ function App() {
         <Route path="dashboard" element={<DashBoard />} />
         <Route path="dashboard/product/:id" element={<ProductDetails />} />
         <Route path="create" element={<Create />} />
+        <Route path="update" element={<UpdateProduct />} />
+        <Route path="/:id" element={<SingleUpdate />} />
+        <Route path="/profile" element={<UserProfile />} />
       </Route>
 
       {/* <Route path="concerts">

@@ -52,28 +52,17 @@ const Navbar = () => {
               >
                 Products
               </NavLink>
-              {/* <a
-                href="#"
-                className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-              >
-                Team
-              </a>
-              <a
-                href="#"
-                className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-              >
-                Projects
-              </a>
-              <a
-                href="#"
-                className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-              >
-                Calendar
-              </a> */}
             </div>
           </div>
           <div className="flex items-center">
-            <div className="shrink-0">
+            <div className="shrink-0 flex flex-row gap-6 justify-center items-center">
+              <button
+                onClick={() => navigate("/update")}
+                type="button"
+                className="relative inline-flex items-center gap-x-1.5 rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                Update Product
+              </button>
               <button
                 onClick={() => navigate("/create")}
                 type="button"
@@ -112,7 +101,7 @@ const Navbar = () => {
                 >
                   <MenuItem>
                     <a
-                      href="#"
+                      onClick={() => navigate("/profile")}
                       className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:outline-none"
                     >
                       Your Profile
